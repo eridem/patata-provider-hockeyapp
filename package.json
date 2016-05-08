@@ -1,0 +1,26 @@
+{
+  "name": "patata-provider-hockeyapp",
+  "version": "0.0.0",
+  "description": "HockeyApp.net provider for Patata",
+  "main": "index.js",
+  "author": "Miguel Ángel Domínguez Coloma",
+  "license": "MIT",
+  "keywords": [
+    "patata",
+    "appium",
+    "cucumber",
+    "testing",
+    "bdd",
+    "android",
+    "ios",
+    "behavior",
+    "hockeyapp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/patataio/patata-provider-hockeyapp.git"
+  },
+  "dependencies": {
+    "hockeyapp-api-wrapper": "0.0.3"
+  }
+}
