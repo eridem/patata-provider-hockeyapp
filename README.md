@@ -36,10 +36,10 @@ Where:
 
 Token can be obtained on your [HockeyApp profile page](https://rink.hockeyapp.net/manage/auth_tokens):
 
-![HockeyApp token](doc/hockeyapp-token.jpg)
+![HockeyApp token](https://bytebucket.org/patataio/patata-provider-hockeyapp/raw/f8865fc90685e87dddda6260639c1c8b2e05b921/doc/hockeyapp-token.jpg)
 
 ## App
 
 The ```app``` value is the title of the app to test:
 
-![HockeyApp token](doc/hockeyapp-app.jpg)
+![HockeyApp token](https://bytebucket.org/patataio/patata-provider-hockeyapp/raw/f8865fc90685e87dddda6260639c1c8b2e05b921/doc/hockeyapp-app.jpg)
