@@ -20,7 +20,8 @@ patata.suite('suite01', {
     provider: {
         package: PatataProviderHockeyApp,
         token: 'aaaabbbbccccdddd0000111122223333',
-        id: 'aaaabbbbccccdddd0000111122223333'
+        id: 'aaaabbbbccccdddd0000111122223333',
+        extension: 'apk'
     },
         
 });
@@ -36,7 +37,8 @@ patata.suite('suite01', {
     provider: {
         package: PatataProviderHockeyApp,
         token: 'aaaabbbbccccdddd0000111122223333',
-        app: 'YOUR HOCKEY APP TITLE'
+        app: 'YOUR HOCKEY APP TITLE',
+        extension: 'ipa'
     },
         
 });
@@ -48,3 +50,5 @@ Where:
 - ```token```: API token that can be obtained from HockeyApp.
 - ```id```: application to test by app id.
 - ```app```: application to test by title.
+- ```extension```: file extension for download. E.g. apk, ipa, ...
+
