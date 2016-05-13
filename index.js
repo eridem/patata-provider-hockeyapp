@@ -5,6 +5,7 @@ var Q = require('q');
 function PatataProviderHockeyApp(options) {
     this.token = options.token;
     this.app = options.app;
+    this.id = options.id;
 }
 
 PatataProviderHockeyApp.prototype.getBin = function() {
@@ -14,13 +15,19 @@ PatataProviderHockeyApp.prototype.getBin = function() {
  
     // HockeyApp settings
     var hockeyAppToken = this.token;
-    var hockeyAppApp = this.app;
+    var hockeyAppTitle = this.app;
+    var hockeyAppId = this.id;
     
     // Init client
     var hockeyAppCli = new HockeyApp.Client(hockeyAppToken);
     
     hockeyAppCli.getApps().then(function(appsResponse) {
-        var app = HockeyApp.Utils.getAppByTitleMatch(appsResponse, hockeyAppApp);
+        var app;
+        if (this.hockeyAppId) {
+            app = HockeyApp.Utils.getAppByIdMatch(appsResponse, hockeyAppId);
+        } else if (this.hockeyAppTitle) {
+            app = HockeyApp.Utils.getAppByTitleMatch(appsResponse, hockeyAppTitle);
+        }
     
         hockeyAppCli.getVersions(app).then(function(versionResponse) {
             var version = HockeyApp.Utils.getLatestVersion(versionResponse);    

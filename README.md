@@ -20,6 +20,22 @@ patata.suite('suite01', {
     provider: {
         package: PatataProviderHockeyApp,
         token: 'aaaabbbbccccdddd0000111122223333',
+        id: 'aaaabbbbccccdddd0000111122223333'
+    },
+        
+});
+```
+
+Or by first title match:
+
+```
+var PatataProviderHockeyApp = require('patata-provider-hockeyapp');
+
+patata.suite('suite01', {
+
+    provider: {
+        package: PatataProviderHockeyApp,
+        token: 'aaaabbbbccccdddd0000111122223333',
         app: 'YOUR HOCKEY APP TITLE'
     },
         
@@ -29,17 +45,6 @@ patata.suite('suite01', {
 Where:
 
 - ```package```: this package as required.
-- ```token```: API token that can be obtained from HockeyApp (more info below).
-- ```app```: application to test (more info below).
-
-## Token
-
-Token can be obtained on your [HockeyApp profile page](https://rink.hockeyapp.net/manage/auth_tokens):
-
-![HockeyApp token](https://bytebucket.org/patataio/patata-provider-hockeyapp/raw/f8865fc90685e87dddda6260639c1c8b2e05b921/doc/hockeyapp-token.jpg)
-
-## App
-
-The ```app``` value is the title of the app to test:
-
-![HockeyApp token](https://bytebucket.org/patataio/patata-provider-hockeyapp/raw/f8865fc90685e87dddda6260639c1c8b2e05b921/doc/hockeyapp-app.jpg)
+- ```token```: API token that can be obtained from HockeyApp.
+- ```id```: application to test by app id.
+- ```app```: application to test by title.
