@@ -40,7 +40,7 @@ PatataProviderHockeyApp.prototype.getBin = function() {
     
         hockeyAppCli.getVersions(app).then(function(versionResponse) {
             var version = HockeyApp.Utils.getLatestVersion(versionResponse);    
-            var downloadUrl = hockeyAppCli.getLatestAndroidVersionDownloadLink(app, version, extension);
+            var downloadUrl = hockeyAppCli.getLatestAndroidVersionDownloadLink(app, version, hockeyAppExtension);
     
             deferred.resolve(downloadUrl);
         });
