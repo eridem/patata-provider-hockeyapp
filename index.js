@@ -46,35 +46,36 @@ class PatataProviderHockeyApp {
   }
 
   getBin () {
+    let that = this
     let deferred = Q.defer()
 
-    let hockeyAppCli = new this.HockeyAppModule.Client(this.token)
+    let hockeyAppCli = new this.HockeyAppModule.Client(that.token)
 
     hockeyAppCli.getApps().then((appsResponse) => {
       var selectedApp
-      if (this.id) {
-        selectedApp = this.HockeyAppModule.Utils.getAppByIdMatch(appsResponse, this.id)
-      } else if (this.app) {
-        selectedApp = this.HockeyAppModule.Utils.getAppByTitleMatch(appsResponse, this.app)
+      if (that.id) {
+        selectedApp = that.HockeyAppModule.Utils.getAppByIdMatch(appsResponse, that.id)
+      } else if (that.app) {
+        selectedApp = that.HockeyAppModule.Utils.getAppByTitleMatch(appsResponse, that.app)
       }
 
       if (!selectedApp) {
-        return deferred.reject(this.log.getErrorMessage(errorMessageFn('App not found')))
+        return deferred.reject(that.log.getErrorMessage(errorMessageFn('App not found')))
       }
 
       hockeyAppCli.getVersions(selectedApp).then((versionResponse) => {
         let version = null
-        if (this.versionFilter) {
-          version = this.HockeyAppModule.Utils.getAppByVersionFilter(versionResponse, this.versionFilter)
+        if (that.versionFilter) {
+          version = that.HockeyAppModule.Utils.getAppByVersionFilter(versionResponse, that.versionFilter)
         } else {
-          version = this.HockeyAppModule.Utils.getLatestVersion(versionResponse)
+          version = that.HockeyAppModule.Utils.getLatestVersion(versionResponse)
         }
 
         if (!version) {
-          return deferred.reject(this.log.getErrorMessage(errorMessageFn('Latest version of the app not found')))
+          return deferred.reject(that.log.getErrorMessage(errorMessageFn('Latest version of the app not found')))
         }
 
-        let downloadUrl = hockeyAppCli.getLatestAndroidVersionDownloadLink(selectedApp, version, this.extension)
+        let downloadUrl = hockeyAppCli.getLatestAndroidVersionDownloadLink(selectedApp, version, that.extension)
 
         deferred.resolve(downloadUrl)
       }).catch(function (error) {

@@ -21,7 +21,7 @@
     "url": "https://bitbucket.org/patataio/patata-provider-hockeyapp.git"
   },
   "dependencies": {
-    "hockeyapp-api-wrapper": "0.0.6",
+    "hockeyapp-api-wrapper": "0.x.x",
     "q": "^1.4.1"
   },
   "devDependencies": {
