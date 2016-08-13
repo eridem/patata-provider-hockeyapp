@@ -38,8 +38,7 @@ describe('PatataProviderHockeyApp', function() {
     });
     it('should raise exception if extension is invalid', function () {
       (() => new HockeyAppProvider({ token : validToken, app: validApp, extension: invalidExtension })).should.throw(Error, "[PatataProviderHockeyApp][Error] Invalid arguments. You missed \'extension\' or is empty");
-    });
-       
+    });       
     it('should not raise exception if all arguments are valid', function () {
       (() => new HockeyAppProvider({ token : validToken, app: validApp, extension: validExtension })).should.not.throw(Error);
     });
