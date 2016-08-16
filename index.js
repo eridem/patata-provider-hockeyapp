@@ -47,45 +47,44 @@ class PatataProviderHockeyApp {
 
   getBin () {
     let that = this
-    let deferred = Q.defer()
+    return new Promise((resolve, reject) => {
+      let hockeyAppCli = new this.HockeyAppModule.Client(that.token)
 
-    let hockeyAppCli = new this.HockeyAppModule.Client(that.token)
-
-    hockeyAppCli.getApps().then((appsResponse) => {
-      var selectedApp
-      if (that.id) {
-        selectedApp = that.HockeyAppModule.Utils.getAppByIdMatch(appsResponse, that.id)
-      } else if (that.app) {
-        selectedApp = that.HockeyAppModule.Utils.getAppByTitleMatch(appsResponse, that.app)
-      }
-
-      if (!selectedApp) {
-        return deferred.reject(that.log.getErrorMessage(errorMessageFn('App not found')))
-      }
-
-      hockeyAppCli.getVersions(selectedApp).then((versionResponse) => {
-        let version = null
-        if (that.versionFilter) {
-          version = that.HockeyAppModule.Utils.getAppByVersionFilter(versionResponse, that.versionFilter)
-        } else {
-          version = that.HockeyAppModule.Utils.getLatestVersion(versionResponse)
+      hockeyAppCli.getApps().then((appsResponse) => {
+        var selectedApp
+        if (that.id) {
+          selectedApp = that.HockeyAppModule.Utils.getAppByIdMatch(appsResponse, that.id)
+        } else if (that.app) {
+          selectedApp = that.HockeyAppModule.Utils.getAppByTitleMatch(appsResponse, that.app)
         }
 
-        if (!version) {
-          return deferred.reject(that.log.getErrorMessage(errorMessageFn('Latest version of the app not found')))
+        if (!selectedApp) {
+          return reject(that.log.getErrorMessage(errorMessageFn('App not found')))
         }
 
-        let downloadUrl = hockeyAppCli.getLatestAndroidVersionDownloadLink(selectedApp, version, that.extension)
+        hockeyAppCli.getVersions(selectedApp).then((versionResponse) => {
+          let version = null
+          
+          if (that.versionFilter) {
+            version = that.HockeyAppModule.Utils.getAppByVersionFilter(versionResponse, that.versionFilter)
+          } else {
+            version = that.HockeyAppModule.Utils.getLatestVersion(versionResponse)
+          }
 
-        deferred.resolve(downloadUrl)
-      }).catch(function (error) {
-        deferred.reject(error)
+          if (!version) {
+            return reject(that.log.getErrorMessage(errorMessageFn('Latest version of the app not found')))
+          }
+
+          let downloadUrl = hockeyAppCli.getLatestAndroidVersionDownloadLink(selectedApp, version, that.extension)
+
+          resolve(downloadUrl)
+        }).catch((error) => {
+          reject(error)
+        })
+      }).catch((error) => {
+        reject(error)
       })
-    }).catch(function (error) {
-      deferred.reject(error)
     })
-
-    return deferred.promise
   }
 }
 
