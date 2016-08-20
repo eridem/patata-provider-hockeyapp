@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/eridem/patata-provider-hockeyapp.svg?branch=master)](https://travis-ci.org/eridem/patata-provider-hockeyapp)
+
 # HockeyApp provider for Patata
 
 The HockeyApp provider for [Patata](http://patata.io) allow us to test our applications getting the binaries directly from [HockeyApp.net](http://hockeyApp.net).

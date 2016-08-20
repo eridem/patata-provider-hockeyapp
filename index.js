@@ -1,5 +1,5 @@
 'use strict'
-const Q = require('q')
+
 const errorMessageFn = function (message) {
   return '[PatataProviderHockeyApp][Error] ' + message
 }
