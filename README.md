@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/eridem/hockeyapp-api-wrapper.svg?branch=master)](https://travis-ci.org/eridem/hockeyapp-api-wrapper)
+[![Build Status](https://travis-ci.org/eridem/patata-provider-hockeyapp.svg?branch=master)](https://travis-ci.org/eridem/patata-provider-hockeyapp)
 
 # HockeyApp provider for Patata
 
