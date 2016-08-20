@@ -54,3 +54,7 @@ Where:
 - ```app```: application to test by title.
 - ```extension```: file extension for download. E.g. apk, ipa, ...
 
+## Additional notes
+
+- Moved to GitHub
+- Add Travis CI
